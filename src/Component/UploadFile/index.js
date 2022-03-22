@@ -21,17 +21,9 @@ const UploadFile = () => {
     handleListFromDatFile();
   }, [userFile]);
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    console.log('Submit');
-  };
   return (
     <>
-      <UploadFileSection
-        handleInputFile={handleInputFile}
-        handleSubmit={handleSubmit}
-        result={result}
-      />
+      <UploadFileSection handleInputFile={handleInputFile} result={result} />
     </>
   );
 };
