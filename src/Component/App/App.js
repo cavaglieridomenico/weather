@@ -1,10 +1,11 @@
+import { Container } from 'react-bootstrap';
 import UploadFile from '../UploadFile';
 
 const App = () => {
   return (
-    <div>
+    <Container>
       <UploadFile />
-    </div>
+    </Container>
   );
 };
 

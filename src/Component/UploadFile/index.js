@@ -1,15 +1,26 @@
 import { useState, useEffect } from 'react';
 import UploadFileSection from './UploadFileSection';
+import { getResult } from '../../assets/scripts/file_utility/file_utility';
 
 const UploadFile = () => {
-  const [file, setFile] = useState(null);
-  useEffect(() => {
-    console.log(file);
-  }, [file]);
+  const [userFile, setUserFile] = useState(null);
+  const [result, setResult] = useState(null);
+
   const handleInputFile = event => {
     event.preventDefault();
-    setFile(event.target.files[0]);
+    if (!event.target.files) return;
+    setUserFile(event.target.files[0]);
   };
+
+  useEffect(() => {
+    if (!userFile) return;
+    const handleListFromDatFile = async () => {
+      const fileText = await userFile.text();
+      setResult(getResult(fileText, 1, 2));
+    };
+    handleListFromDatFile();
+  }, [userFile]);
+
   const handleSubmit = event => {
     event.preventDefault();
     console.log('Submit');
@@ -19,6 +30,7 @@ const UploadFile = () => {
       <UploadFileSection
         handleInputFile={handleInputFile}
         handleSubmit={handleSubmit}
+        result={result}
       />
     </>
   );

@@ -1,13 +1,13 @@
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
-const UploadFileSection = ({ handleInputFile, handleSubmit }) => {
+const UploadFileSection = ({ handleInputFile, result }) => {
   return (
     <main>
-      <section className='upload-file-section'>
-        <Form onSubmit={handleSubmit}>
+      <section className='w-75 mt-4 ms-auto me-auto'>
+        <Form>
           <Form.Group controlId='formFileLg'>
             <Form.Label className='mt-2'>
-              <h1>Upload your file .dat</h1>
+              <h1 className='mb-4'>Upload your file .dat</h1>
             </Form.Label>
             <Form.Control
               type='file'
@@ -16,10 +16,11 @@ const UploadFileSection = ({ handleInputFile, handleSubmit }) => {
               accept='.dat'
             />
           </Form.Group>
-          <div className='button-box'>
-            <Button variant='primary' type='submit'>
-              Get your result
-            </Button>
+          <div className='mt-5'>
+            <h2>
+              {result &&
+                `The day with the smallest temperature range is: The day number ${result}`}
+            </h2>
           </div>
         </Form>
       </section>
