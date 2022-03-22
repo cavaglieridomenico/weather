@@ -4,7 +4,7 @@
  * @param {string} string
  * @returns {array}
  */
-const getList = string => {
+export const getList = string => {
   const list = string.split(' ');
   return list.filter(item => item !== '');
 };
@@ -15,7 +15,7 @@ const getList = string => {
  * @param {string} textData
  * @returns {array}
  */
-const getTable = textData => {
+export const getTable = textData => {
   return textData.split(/\n/);
 };
 
@@ -26,7 +26,7 @@ const getTable = textData => {
  * @param {array} table
  * @returns {array}
  */
-const getBody = table => {
+export const getBody = table => {
   const body = table.slice(1);
   return body.map(item => getList(item));
 };
